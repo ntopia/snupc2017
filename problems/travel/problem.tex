@@ -1,0 +1,73 @@
+\begin{problem}{즉흥 여행}{standard input}{standard output}
+
+당신은 세계 갑부 순위에서 찾아볼 수 있는 대부호인 상일이의 비서이다. 
+당신의 상사인 상일이는 여행을 즉흥적으로 가는 것을 즐긴다. 
+상일이가 즉흥적으로 여행을 가는 방식은 다음과 같다.
+
+\begin{enumerate}
+\item{자신이 있는 도시의 공항에 간다.}
+\item{그 공항에서 출발할 수 있는 항공편 중 임의의 항공편 티켓을 구입한다. 이 때, 각각의 항공편의 티켓을 구입하는 확률은 모두 동일하다.}
+\item{구입한 항공편을 타고 다른 도시로 이동한다.}
+\end{enumerate}
+
+이제, 위의 과정을 한 번의 여정이라고 정의하자. 
+상일이는 한 번의 여정으로 여행을 했다고 만족하지 못하는 성격이기 때문에, 한 번의 여행에 정확히 $K$ 번의 여정을 해야 한다.
+들어갈 때는 마음대로지만 나올 때는 아닌 공항도 있다. 
+이 경우 더 이상 여정을 진행하지 못하여, 상황에 따라 상일이는 영원한 여행을 하게 될 수도 있다. 
+
+상일이는 여행 중에 업무와 관련한 이야기를 듣기 싫어하기 때문에, 당신은 어쩔 수 없이 휴가를 얻게 되었다. 
+하지만, 마냥 휴가를 즐기고 있을 당신이 아니다. 
+당신은 상일이가 갈 수 있는 여행 코스 중 가장 확률이 높은 여행 코스를 따라 미행하기로 결심하였다. 
+또한 여행이 끝남과 동시에 업무로 다시 돌아가야 하므로, 그 여행 코스의 최종 목적지 공항 근처에 업무 관련 자료를 미리 보내려 한다.
+
+상일이가 갈 수 있는 여행 코스 중 가장 확률이 높은 여행 코스의 최종 공항을 알아내자.
+
+
+\InputFile
+첫 번째 줄에 테스트 케이스의 수 $T$가 주어진다.
+
+각 테스트 케이스의 첫 번째 줄에 전 세계 공항의 개수 $N$과 한 여행에 해야 하는 여정의 수 $K$가 주어진다. ($2 \le N \le 100, 1 \le K \le 1,000$)
+
+각 테스트 케이스의 두 번째 줄부터 $N$개의 줄에 걸쳐 각 공항의 IATA 공항 코드가 주어진다. 
+이 공항 코드는 3자리 알파벳 대문자로 이루어진다. 
+여행을 출발할 때 가는 공항의 IATA 공항 코드는 \texttt{ICN}이다.
+
+각 테스트 케이스의 그 다음 줄부터 $N$개의 줄에 걸쳐 각 줄에 $N$개의 숫자가 주어진다. 
+$i$번째 줄의 $j$번째 숫자는 $i$번 공항에서 출발하여 $j$번 공항에 도착하는 항공편의 개수 $S_{ij}$이다. ($0 \le S_{ij} \le 100, S_{ii} = 0$)
+
+\OutputFile
+각 테스트 케이스마다, 첫 번째 줄에 상일이가 갈 수 있는 여행 코스 중 가장 확률이 높은 여행 코스의 최종 공항의 IATA 공항 코드를 출력한다.
+
+\Example
+
+\begin{example}
+\exmp{1
+4 3
+ICN
+FUK
+PEK
+FNJ
+0 2 3 0
+2 0 3 0
+1 2 0 5
+0 0 5 0
+}{PEK}%
+\end{example}
+
+\Notes
+예제 입력에서, 아래 10가지 여행 경로가 있고, 각 확률은 다음과 같다.
+
+\begin{itemize}
+\item{\texttt{ICN} $\to$ \texttt{FUK} $\to$ \texttt{ICN} $\to$ \texttt{FUK} : $0.4 \times 0.4 \times 0.4 = 0.064$}
+\item{\texttt{ICN} $\to$ \texttt{FUK} $\to$ \texttt{ICN} $\to$ \texttt{PEK} : $0.4 \times 0.4 \times 0.6 = 0.096$}
+\item{\texttt{ICN} $\to$ \texttt{FUK} $\to$ \texttt{PEK} $\to$ \texttt{ICN} : $0.4 \times 0.6 \times 0.125 = 0.03$}
+\item{\texttt{ICN} $\to$ \texttt{FUK} $\to$ \texttt{PEK} $\to$ \texttt{FUK} : $0.4 \times 0.6 \times 0.25 = 0.06$}
+\item{\texttt{ICN} $\to$ \texttt{FUK} $\to$ \texttt{PEK} $\to$ \texttt{FNJ} : $0.4 \times 0.6 \times 0.625 = 0.15$}
+\item{\texttt{ICN} $\to$ \texttt{PEK} $\to$ \texttt{ICN} $\to$ \texttt{FUK} : $0.6 \times 0.125 \times 0.4 = 0.03$}
+\item{\texttt{ICN} $\to$ \texttt{PEK} $\to$ \texttt{ICN} $\to$ \texttt{PEK} : $0.6 \times 0.125 \times 0.6 = 0.045$}
+\item{\texttt{ICN} $\to$ \texttt{PEK} $\to$ \texttt{FUK} $\to$ \texttt{ICN} : $0.6 \times 0.25 \times 0.4 = 0.06$}
+\item{\texttt{ICN} $\to$ \texttt{PEK} $\to$ \texttt{FUK} $\to$ \texttt{PEK} : $0.6 \times 0.25 \times 0.6 = 0.09$}
+\item{\texttt{ICN} $\to$ \texttt{PEK} $\to$ \texttt{FNJ} $\to$ \texttt{PEK} : $0.6 \times 0.625 \times 1 = 0.375$}
+\end{itemize}
+
+\end{problem}

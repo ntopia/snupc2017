@@ -1,0 +1,231 @@
+% Based on olymp.sty, original comments are following:
+%
+% Macros for the contest problems
+% for MikTeX: use latex.exe
+% (C) Dmitry S. Lomov (SPb SU Training Centre), 2001-2002
+% (C) Kitten Computing [Andrew Lopatin & Nick Durov], 2001-2002,2003
+% (C) Andrew Stankevich (SPb IFMO Training Center), 2003
+%
+
+\ProvidesPackage{algospot-sty/algospot}
+
+\newif\if@isdraft
+
+\DeclareOption{draft}{\@isdrafttrue}
+\ProcessOptions
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{kotex}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{import}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage[normal]{engord}
+\usepackage[svgnames,table]{xcolor}
+\engordraisetrue
+\def\hlinterlineup{2pt}
+\def\hlinterlinedn{0pt}
+
+\if@isdraft%
+	\newenvironment{onlyindraft}{\color{Red}}{}%
+\else%
+	\excludecomment{onlyindraft}%
+\fi%
+
+\providecommand{\emshape}{\bfseries}
+
+\setlength{\parskip}{0.6\baselineskip}
+\setstretch{1.2}
+
+\setmainfont[Mapping=tex-text,BoldFont={* Bold},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{NanumMyeongjo}
+\setsansfont[Mapping=tex-text,BoldFont={* Bold},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{NanumGothic}
+%\setmainhangulfont[Mapping=tex-text,BoldFont={* ExtraBold},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{NanumMyeongjo}
+%\setsanshangulfont[Mapping=tex-text,BoldFont={* ExtraBold},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{NanumGothic}
+%\setmonofont[Mapping=tex-text,BoldFont={*},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{DejaVuSansNanumGothic}
+%\setmonohangulfont[Mapping=tex-text,BoldFont={*},ItalicFont={*},ItalicFeatures={FakeSlant=.2}]{DejaVuSansNanumGothic}
+
+\lstset{
+	% basicstyle=\ttfamily,
+	keywordstyle=\color{FireBrick},
+	identifierstyle=\color{DarkSlateBlue},
+	commentstyle=\color{Gray},
+	showstringspaces=true,
+	numbers=left,
+	frame=L,
+	basewidth=0.5em,
+	numberstyle=\ttfamily\color{DarkGreen},
+	stepnumber=5,
+}
+
+
+% title/date overriding. save to \THETITLE, \THEDATE
+\def\title#1{\gdef\@title{#1}\gdef\THETITLE{#1}}
+\def\date#1{\gdef\@date{#1}\gdef\THEDATE{#1}}
+
+
+\def\doskiptwo#1{height#1&\omit&&\omit&\cr}
+\def\mydohlinetwo#1#2{
+\doskiptwo{#1}
+\noalign{\hrule height 0.4pt}
+\doskiptwo{#2}
+}
+\def\dohlinetwo{\mydohlinetwo{\hlinterlinedn}{\hlinterlineup}}
+\def\endhlinetwo{\doskiptwo{\hlinterlinedn}\noalign{\hrule}}
+\def\starthlinetwo{\doskiptwo\hlheaderup}
+
+%---------- From package "lastpage" ------------------
+\def\lastpage@putlabel{\addtocounter{page}{-1}%
+   \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}}}%
+   \addtocounter{page}{1}}
+\def\lastproblem@putlabel{%
+   \immediate\write\@auxout{\string\newlabel{LastProblem}{{\Alph{problem}}{}}}%
+}
+\AtEndDocument{\clearpage\lastpage@putlabel\lastproblem@putlabel}%
+%---------- end of "lastpage" ------------------
+
+
+\newlength{\exmpwidinf}
+\newlength{\exmpwidouf}
+\exmpwidinf=8cm
+\exmpwidouf=8cm
+\newlength{\exmpwidewid}
+\exmpwidewid=16cm
+\newlength{\afterproblemhead}
+\afterproblemhead=3mm
+\newlength{\afterconstraints}
+\afterconstraints=2mm
+
+\newcommand{\problemheadfont}{\LARGE}
+\newcommand{\problemsectionfont}{\Large}
+\newcommand{\problemend}{\clearpage}
+\newcommand{\problemtextfont}{\normalsize}
+\newcommand{\beforeproblemsectioncaption}{\smallbreak\smallskip}
+\newcommand{\afterproblemsectioncaption}{\vspace{-1mm}}
+
+\if@twocolumn
+    \setlength\exmpwidinf{4cm}
+    \setlength\exmpwidouf{4cm}
+    \setlength\exmpwidewid{8.5cm}
+    \setlength\afterproblemhead{2mm}
+    \setlength\afterconstraints{0mm}
+    \renewcommand{\problemheadfont}{\large}
+    \renewcommand{\problemsectionfont}{\normalsize}
+    \renewcommand{\problemend}{\par\medskip}
+    \renewcommand{\problemtextfont}{\footnotesize}
+    \renewcommand{\beforeproblemsectioncaption}{\smallskip}
+    \renewcommand{\afterproblemsectioncaption}{}
+\fi
+
+% "shortitems" environment: it's a "compact itemize"
+%\def\shortitems{\vspace{-5.5mmplus2mm}\itemize\itemsep-1.618mmplus0.5mm\relax}%
+%\def\endshortitems{\vspace{0mmplus2mm}\enditemize\unskip}%
+\def\shortitems{\setlength{\parskip}{-5ex}\itemize\setlength{\parskip}{-1ex}\relax}%
+\def\endshortitems{\vspace{0mmplus2mm}\enditemize\unskip}%
+
+\newcounter{problem}
+\newcommand{\problemcaptionprefix}{Problem \Alph{problem}. }
+
+\newenvironment{problem}[4]{%
+{\noindent{%
+\refstepcounter{problem}\bf\problemheadfont\textsf{\problemcaptionprefix #1}}%
+\nopagebreak\par\vspace{\afterproblemhead}\problemtextfont\parindent=6.5mm%
+}\nopagebreak\par\vspace{\afterconstraints}\problemtextfont%
+\newcommand{\Interaction}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Interaction protocol}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\InputFile}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Input}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\Example}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Sample input and output}}\nopagebreak\par\afterproblemsectioncaption\relax\smallskip}%
+\newcommand{\OutputFile}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Output}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\Notes}
+{\beforeproblemsectioncaption\noindent{\bf\problemsectionfont\textsf{Notes}}\nopagebreak\par\afterproblemsectioncaption}%
+\newcommand{\InputFileName}{#2}%
+\newcommand{\OutputFileName}{#3}%
+}
+{\problemend}
+
+\def\s@tm@cr@s{%
+\def\widthin##1{\exmpwidinf=##1\relax}\def\widthout##1{\exmpwidouf=##1\relax}%
+\def\stretchin##1{\advance\exmpwidinf by ##1\relax}%
+\def\stretchout##1{\advance\exmpwidouf by ##1\relax}%
+\def\testst@r{\@ifstar{{\tt [*] is deprected, you need not use it any more}}{}}%
+}%
+
+\newenvironment{example}[1][]{%
+\s@tm@cr@s\tt\obeylines\obeyspaces\frenchspacing\testst@r#1%
+\newcommand{\exmp}[2]{%
+\begin{minipage}[t]{\exmpwidinf}\rightskip=0pt plus 1fill\relax##1\medskip\end{minipage}&%
+\begin{minipage}[t]{\exmpwidouf}\rightskip=0pt plus 1fill\relax##2\medskip\end{minipage}\\%
+\hline}%
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\bf\InputFileName}&%
+\multicolumn{1}{c|}{\bf\OutputFileName}\\%
+\hline
+}
+{\end{tabular}}
+
+\ifcase\@ptsize % 10 pt
+\hoffset=-27mm
+\voffset=-35mm
+\setlength\textheight{245mm}
+\setlength\textwidth{175mm}
+\or % 11 pt
+\hoffset=-25mm
+\voffset=-35mm
+\setlength\textheight{250mm}
+\setlength\textwidth{175mm}
+\or % 12 pt
+\hoffset=-20mm
+\voffset=-35mm
+\setlength\textheight{245mm}
+\setlength\textwidth{175mm}
+\fi
+
+\if@twocolumn
+\hoffset=-18mm
+\voffset=-40mm
+\setlength\textheight{255mm}
+\setlength\textwidth{195mm}
+\fi
+
+\makeatletter
+
+\newcommand{\contestname}{\THETITLE\\\THEDATE}
+
+\renewcommand{\@oddhead}{%
+\parbox{\textwidth}{%
+\sffamily\begin{center}
+\protect\contestname
+\\[2pt]
+\hrule%
+\end{center}}%
+}
+
+\renewcommand{\@oddfoot}{%
+\parbox{\textwidth}{%
+\hrule%
+\vspace{6pt}%
+\sffamily{{\hfil}\it \ifnum 0=\value{problem} {Contestants' Guide}\else{Problem \Alph{problem}}\fi, Page \thepage\space of \pageref{LastPage}\hfil}}%
+}%
+
+\makeatother
+
+\setlength{\headheight}{2cm}
+\setlength{\headsep}{6mm}
+\hfuzz=0.5pt
+
+\parindent=0mm
+\parskip=1ex
+
+\binoppenalty=10000
+\relpenalty=10000
+
+\sloppy
