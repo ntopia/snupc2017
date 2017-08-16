@@ -11,3 +11,7 @@
 Session.vim
 .netrwhist
 *~
+
+## Intermediate documents
+*-converted-to.*
+
