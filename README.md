@@ -5,6 +5,7 @@
 ```
 sudo apt-get install fonts-nanum
 sudo apt-get install texlive-luatex
+sudo apt-get install texlive-xetex
 sudo apt-get install texlive-lang-cjk
 sudo apt-get install texlive-fonts-recommended
 ```
