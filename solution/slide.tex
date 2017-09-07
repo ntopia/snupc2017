@@ -4,13 +4,16 @@
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
+\usepackage{unicode-math}
 \usefonttheme{serif}
 \setmainfont{NanumGothicBold}
+\setmathfont[range=\mathup/{num}]{NanumGothicBold}
+\setmathfont[range={"00D7}]{NanumGothicBold}
 \begin{document}
 \title{2017 서울대학교 프로그래밍 경시대회}
-\date{\today} 
+\date{\today}
 
-\frame{\titlepage} 
+\frame{\titlepage}
 
 \begin{frame}
   \frametitle{수고하셨습니다}
@@ -23,7 +26,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-A. 여우 사인}
+  \frametitle{Div2A. 여우 사인}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -34,15 +37,15 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-A. 여우 사인}
+  \frametitle{Div2A. 여우 사인}
   \begin{itemize}
-    \item 잘 계산하면 돼요.
-    \item 단순히 반복문 돌려도 아마 될 거예요.
+    \item 여우는 사랑입니다.
+    \item 입력이 정확히 $(1, 3)$, $(1, 4)$, $(3, 4)$ 세 개의 쌍으로만 이루어져 있는지 판별하면 됩니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-B. 고장난 시계}
+  \frametitle{Div2B. 고장난 시계}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -53,7 +56,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-B. 고장난 시계}
+  \frametitle{Div2B. 고장난 시계}
   \begin{itemize}
     \item 판이 크지는 않아요.
     \item 반드시 전구가 배치되어야 하는 곳과 그렇지 않은 곳이 있어요.
@@ -62,7 +65,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-C. 타일 뒤집기 (Easy)}
+  \frametitle{Div2C. 타일 뒤집기 (Easy)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -73,18 +76,15 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-C. 타일 뒤집기 (Easy)}
+  \frametitle{Div2C. 타일 뒤집기 (Easy)}
   \begin{itemize}
-    \item DP!
-    \item $k$번째로 XXX 공항에 도착하는 확률을 계산해요.
-    \item XXX 공항에 도착하는 코스 중 최대확률의 정보만 저장하면 돼요.
-    \item 근데 double 자료형은 생각보다 정확하지 않아요.
-    \item 확률의 log값을 저장하도록 하면 해결할 수 있어요.
+    \item 어떤 타일의 바로 위나 같은 행의 타일을 뒤집을 수 없을 때, 그 타일을 뒤집으려면 반드시 바로 아래 타일을 뒤집어야 합니다.
+    \item 첫 행부터 답이 되는 타일을 뒤집고, 현재 상태와 답을 비교해서 다음 행에서 뒤집어야 할 타일을 구하면 됩니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-D, D1-B. 관악산 등산}
+  \frametitle{Div2D \& Div1B. 관악산 등산}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -95,21 +95,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-D, D1-B. 관악산 등산}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \begin{itemize}
-        \item 즐거운 수학 시간
-        \item 내접원의 반지름을 구해요.
-        \item 현재 원의 반지름이 $r$일 때 다음 원의 반지름을 구할 수 있어요.
-      \end{itemize}
-    \column{0.5\textwidth}
-      \includegraphics[width=0.9\textwidth]{pizza-solution.eps}
-  \end{columns}
+  \frametitle{Div2D \& Div1B. 관악산 등산}
+  \begin{itemize}
+    \item Corea가 가는 경로는 항상 높이가 증가하는 순입니다.
+    \item $cnt_{i} = \max_{H[j] > H[i]} cnt_{j} + 1$
+    \item 높은 곳에 있는 쉼터부터 $cnt$를 결정하면 됩니다.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-E. 넴모넴모 (Easy)}
+  \frametitle{Div2E. 넴모넴모 (Easy)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -120,18 +115,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-E. 넴모넴모 (Easy)}
+  \frametitle{Div2E. 넴모넴모 (Easy)}
   \begin{itemize}
-    \item 세그먼트 트리를 써요.
-    \item 각 노드에는 왕의 이름 (및 substring)을 읽는 경우의 수를 2차원 배열로 저장해요.
-    \item 그러면 두 노드를 합치는 연산은 $O(m^{3})$이 걸려요.
-    \item 전체 시간복잡도는 $O(Pm^{3}\log n)$ ($P = \Sigma|S|$)
-    \item 이러면 아마 TLE일걸요?
+    \item $N \times M$이 작으므로 모든 배치를 탐색하면 됩니다.
+    \item 깊이 우선 탐색 등을 이용해 배치할 수 없을 때마다 커팅하는 것을 의도했습니다.
+    \item 일단 배치를 만들고 가능한지 검사하는 방식으로는 시간 내에 들기 힘듭니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-F. 앵무새}
+  \frametitle{Div2F. 앵무새}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -142,7 +135,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-F. 앵무새}
+  \frametitle{Div2F. 앵무새}
   \begin{itemize}
     \item 답은 $100,000$ 이하로 나와요.
     \item 모든 가능한 분모에 대해 분자를 구하고, 그 결과가 입력과 같은지를 확인하면 돼요.
@@ -150,7 +143,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-G, D1-D. 셔틀버스}
+  \frametitle{Div2G \& Div1D. 셔틀버스}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -161,16 +154,17 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-G, D1-D. 셔틀버스}
+  \frametitle{Div2G \& Div1D. 셔틀버스}
   \begin{itemize}
-    \item 입력에 대해 Suffix Array를 만들어요.
-    \item 특정 길이 이상의 원소 중 가장 마지막 원소를 가져와요.
-    \item LCP를 찾으면 몇 번 반복됐는지 알 수 있어요.
+    \item 왼쪽 절반은 항상 왼쪽으로, 오른쪽 절반은 항상 오른쪽으로 이동합니다.
+    \item 양쪽의 학생 수를 알면 주어진 자리가 비어 있는지, 혹은 몇 번째로 번호가 작은 학생이 앉아 있는지 구할 수 있습니다.
+    \item 구간 트리 등의 자료구조를 사용하면 학생이 내리는 연산과 $k$번째 학생을 구하는 연산을 빠르게 처리할 수 있습니다.
+    \item $N$이 홀수일 때 가운데에 앉은 학생은 맨 처음 내리는 학생의 위치에 따라 이동 방향이 달라집니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-H. 홍삼 게임 (Easy)}
+  \frametitle{Div2H. 홍삼 게임 (Easy)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -181,15 +175,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-H. 홍삼 게임 (Easy)}
+  \frametitle{Div2H. 홍삼 게임 (Easy)}
   \begin{itemize}
-    \item 결국 모든 수의 최소공배수를 구하면 답이 돼요.
-    \item 모든 수를 소인수분해한 다음, 각 소수마다 지수값의 최대를 취하면 최소공배수를 구할 수 있어요.
+    \item 각 지목권이 어떤 사람에게 있는지, 어떤 지목권이 사용될 차례인지를 알고 있으면 게임의 상태를 나타낼 수 있습니다.
+    \item 총 $2 \times N^{2}$개의 상태에 대해 너비 우선 탐색 등의 방법으로 두 지목권이 겹칠 때까지의 최단거리를 구하면 됩니다.
+    \item 어떤 지목권이 사용될 차례인지를 최단거리의 홀짝성으로 판별하면 틀립니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
+  \frametitle{Div2I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -200,7 +195,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D2-I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
+  \frametitle{Div2I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
   \begin{columns}
     \column{0.5\textwidth}
       \begin{itemize}
@@ -213,7 +208,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-A. 전생했더니 슬라임 연구자였던 건에 대하여 (Hard)}
+  \frametitle{Div1A. 전생했더니 슬라임 연구자였던 건에 대하여 (Hard)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -224,7 +219,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-A. 전생했더니 슬라임 연구자였던 건에 대하여 (Hard)}
+  \frametitle{Div1A. 전생했더니 슬라임 연구자였던 건에 대하여 (Hard)}
   \begin{itemize}
     \item offline 풀이 입니다.
     \item 두 승현이의 위치를 나타내는 상태 $(u, v)$를 정점으로 하는 그래프를 생각해요.
@@ -236,7 +231,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-C. 넴모넴모 (Hard)}
+  \frametitle{Div1C. 넴모넴모 (Hard)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -247,15 +242,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-C. 넴모넴모 (Hard)}
+  \frametitle{Div1C. 넴모넴모 (Hard)}
   \begin{itemize}
-    \item 가중치의 합이 최소가 되도록 $K+1$개의 트리로 나누는 문제예요.
-    \item 모든 트리를 특정 값 이하로 만들 수 있는지를 반복하면 답을 구할 수 있어요. (parametric search)
+    \item 어떤 칸에 넴모를 배치할 수 있는지 확인하려면 그 칸의 왼쪽, 위, 왼쪽 위 칸의 정보가 필요합니다.
+    \item 따라서 어떤 칸의 이전 $N + 1$개 칸의 정보만 알고 있으면 충분합니다.
+    \item Bitmask DP로 해결 가능합니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-E. 데굴데굴}
+  \frametitle{Div1E. 데굴데굴}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -266,19 +262,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-E. 데굴데굴}
+  \frametitle{Div1E. 데굴데굴}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item 수면이 덮는 점은 연속된 구간입니다.
+    \item Two pointers 테크닉으로 구간을 잘 관리하면서 변의 개수를 잘 세면 됩니다.
+    \item 물이 물병을 꽉 채우는 경우 등 주의할 경우가 조금 있습니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-F. 전자기기}
+  \frametitle{Div1F. 전자기기}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -289,7 +282,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-F. 전자기기}
+  \frametitle{Div1F. 전자기기}
   \begin{itemize}
     \item 문제를 풀기 위해 아래 지식이 필요해요.
     \begin{itemize}
@@ -301,7 +294,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-G. 타일 뒤집기 (Hard)}
+  \frametitle{Div1G. 타일 뒤집기 (Hard)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -312,19 +305,25 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-G. 타일 뒤집기 (Hard)}
+  \frametitle{Div1G. 타일 뒤집기 (Hard)}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item 이미지
+    \item 플레이어가 뒤집는 타일의 집합을 xor 하면 결과로 뒤집히는 타일의 집합도 xor됩니다.
+    \item 첫 번째 행에서 한 개의 타일만 뒤집어 보면 규칙성이 보입니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-H. 홍삼 게임 (Hard)}
+  \frametitle{Div1G. 타일 뒤집기 (Hard)}
+  \begin{itemize}
+    \item 답이 되는 배치에 대해 각각의 타일은 첫 행에서 홀짝성이 같은 연속된 구간의 xor 합이 됩니다.
+    \item 연속된 구간의 합은 두 prefix 합의 차로 나타낼 수 있습니다.
+    \item 따라서 이분 컬러링 문제로 바꿔서 해결할 수 있습니다.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Div1H. 홍삼 게임 (Hard)}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -335,19 +334,15 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-H. 홍삼 게임 (Hard)}
+  \frametitle{Div1H. 홍삼 게임 (Hard)}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item 진행 중인 게임을 회전시켜도 답이 바뀌지는 않습니다.
+    \item 두 지목권의 위치를 상대 위치로 관리하면 상태가 $2N$개로 줄어듭니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-I. 구간 합 최대}
+  \frametitle{Div1I. 구간 합 최대}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -358,7 +353,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-I. 구간 합 최대}
+  \frametitle{Div1I. 구간 합 최대}
   \begin{itemize}
     \item 문제를 풀기 위해 아래 지식이 필요해요.
     \begin{itemize}
@@ -370,7 +365,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-J. 그림 그리기}
+  \frametitle{Div1J. 그림 그리기}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -381,7 +376,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-J. 그림 그리기}
+  \frametitle{Div1J. 그림 그리기}
   \begin{itemize}
     \item 문제를 풀기 위해 아래 지식이 필요해요.
     \begin{itemize}
@@ -393,7 +388,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-K. 정육면체를 사랑하는 사람}
+  \frametitle{Div1K. 정육면체를 사랑하는 사람}
   \begin{itemize}
     \item 제출 횟수: ??
     \item 맞은 참가자 수: ??
@@ -404,7 +399,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{D1-K. 정육면체를 사랑하는 사람}
+  \frametitle{Div1K. 정육면체를 사랑하는 사람}
   \begin{itemize}
     \item 문제를 풀기 위해 아래 지식이 필요해요.
     \begin{itemize}
