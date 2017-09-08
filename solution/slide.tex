@@ -38,6 +38,9 @@
 
 \begin{frame}
   \frametitle{Div2A. 여우 사인}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{stupidfox.jpg}
+  \end{center}
   \begin{itemize}
     \item 여우는 사랑입니다.
     \item 입력이 정확히 $(1, 3)$, $(1, 4)$, $(3, 4)$ 세 개의 쌍으로만 이루어져 있는지 판별하면 됩니다.
@@ -287,9 +290,12 @@
 
 \begin{frame}
   \frametitle{Div1C. 넴모넴모 (Hard)}
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{nemo2-sol.png}
+  \end{center}
   \begin{itemize}
     \item 어떤 칸에 넴모를 배치할 수 있는지 확인하려면 그 칸의 왼쪽, 위, 왼쪽 위 칸의 정보가 필요합니다.
-    \item 따라서 어떤 칸의 이전 $N + 1$개 칸의 정보만 알고 있으면 충분합니다.
+    \item 따라서 어떤 칸의 이전 $M + 1$개 칸의 정보만 알고 있으면 충분합니다.
     \item Bitmask DP로 해결 가능합니다.
   \end{itemize}
 \end{frame}
@@ -307,10 +313,13 @@
 
 \begin{frame}
   \frametitle{Div1E. 데굴데굴}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{roll-sol.png}
+  \end{center}
   \begin{itemize}
     \item 수면이 덮는 점은 연속된 구간입니다.
     \item Two pointers 테크닉으로 구간을 잘 관리하면서 변의 개수를 잘 세면 됩니다.
-    \item 물이 물병을 꽉 채우는 경우 등 주의할 경우가 조금 있습니다.
+    \item 물이 물병을 완전히 채우는 경우 등 주의할 경우가 조금 있습니다.
   \end{itemize}
 \end{frame}
 
@@ -350,8 +359,10 @@
 
 \begin{frame}
   \frametitle{Div1G. 타일 뒤집기 (Hard)}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{tile2-sol1.png}
+  \end{center}
   \begin{itemize}
-    \item 이미지
     \item 플레이어가 뒤집는 타일의 집합을 xor 하면 결과로 뒤집히는 타일의 집합도 xor됩니다.
     \item 첫 번째 행에서 한 개의 타일만 뒤집어 보면 규칙성이 보입니다.
   \end{itemize}
@@ -359,6 +370,9 @@
 
 \begin{frame}
   \frametitle{Div1G. 타일 뒤집기 (Hard)}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{tile2-sol2.png}
+  \end{center}
   \begin{itemize}
     \item 답이 되는 배치에 대해 각각의 타일은 첫 행에서 홀짝성이 같은 연속된 구간의 xor 합이 됩니다.
     \item 연속된 구간의 합은 두 prefix 합의 차로 나타낼 수 있습니다.
