@@ -137,8 +137,29 @@
 \begin{frame}
   \frametitle{Div2F. 앵무새}
   \begin{itemize}
-    \item 답은 $100,000$ 이하로 나와요.
-    \item 모든 가능한 분모에 대해 분자를 구하고, 그 결과가 입력과 같은지를 확인하면 돼요.
+    \item $L$에 들어있는 모든 단어에 대하여, 각 단어가 어떤 앵무새에 의해 나타났는지 추적해야 합니다.
+    \item 중복되는 단어가 없기 때문에, 앵무새가 말하는 순서는 반드시 유일하게 결정됩니다.
+    \item 따라서 $L$의 첫 단어부터 차례대로, 그 단어를 어느 앵무새가 말했는지 찾는 작업을 끝까지 반복하면 됩니다.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Div2F. 앵무새}
+  \begin{center}
+    \includegraphics[width=1\textwidth]{parrot-sol.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Div2F. 앵무새}
+  \begin{itemize}
+    \item 구현을 하면서 파싱 + 예외 처리 몇 가지만 신경쓰면 \textbf{CORRECT}를 받을 수 있습니다.
+    \item 틀리신 분은 다음 케이스들이 고려되어있는지 체크해보세요.
+    \begin{itemize}
+      \item 문장 $L$에 들어있는 단어 수가 전체 단어 수보다 적거나 많은 경우
+      \item 단어 수는 같으나 원문에 없는 단어가 $L$에 들어간 경우
+      \item 단어 순서를 안 지킨 경우
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
