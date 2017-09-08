@@ -197,12 +197,27 @@
 \begin{frame}
   \frametitle{Div2I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
   \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.65\textwidth}
       \begin{itemize}
         \item 슬라임을 분해하는 과정을 오른쪽과 같이 이진트리로 모델링 할 수 있습니다.
+        \item 단말노드의 개수는 소인수의 개수와 같습니다.
+      \end{itemize}
+    \column{0.35\textwidth}
+      \includegraphics[width=1\textwidth]{slime-sol-0.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Div2I. 전생했더니 슬라임 연구자였던 건에 대하여 (Easy)}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \begin{itemize}
+        \item 전체 높이를 최소로 만들려면 각 분할과정마다 단말노드가 절반으로 나눠지도록 하면 됩니다.
+        \item $N = p_1^{q_1} p_2^{q_2} ...$ 라면 답은 $\lceil \log_2(p_1 + p_2 + ...) \rceil$
+        \item 수의 범위가 작으니 DP로 접근할 수도 있습니다.
       \end{itemize}
     \column{0.5\textwidth}
-      \includegraphics[width=0.9\textwidth]{slime-sol-0.png}
+      \includegraphics[width=0.9\textwidth]{slime-sol-1.png}
   \end{columns}
 \end{frame}
 
