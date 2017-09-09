@@ -5,10 +5,15 @@
 \usepackage{xunicode}
 \usepackage{xltxtra}
 \usepackage{unicode-math}
+\usepackage{mathtools}
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 \setmainfont{NanumGothicBold}
 \setmathfont{Latin Modern Math}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
 \begin{document}
 \title{2017 서울대학교 프로그래밍 경시대회}
 \date{\today}
@@ -459,30 +464,27 @@
 \begin{frame}
   \frametitle{Div1K. 정육면체를 사랑하는 사람}
   \begin{itemize}
-    \item $K^3 < N \leq (K+1)^3$ 을 만족하는 $K$를 잡아봅니다.
-    \item 즉, 한 변이 $K+1$인 큐브에는 전부 다 넣어 정리할 수 있는 것이죠.
-    \item 따라서 우선 겉넓이가 $6(K+1)^2$ 인 해가 존재하게 됩니다.
-    \item 이보다 더 좋은 해를 찾아봅시다!
+    \item 경우의 수를 효과적으로 가지치기 할 아이디어를 생각해야 합니다.
+    \item 최적해는 정육면체에서 크게 멀지 않은 모양이란 것을 예상해볼 수 있습니다.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Div1K. 정육면체를 사랑하는 사람}
   \begin{itemize}
-    \item 직육면체의 각 변을 $A, B, C$ 라 하고 $A \leq B \le C$ 를 만족한다 합시다.
-    \item $N \leq A \cdot B \cdot C$ 이므로 $N/A \leq B \cdot C$
-    \item $B + C \geq 2 \sqrt{B C}$   (산술-기하 평균 부등식)
-    \item 겉넓이는 $2 (A B + B C + C A) = 2 A (B + C) + 2 B C$
+    \item 직육면체 각 변을 $A, B, C$ 라 합시다. ($A \le B \le C$)
+    \item $A$가 정해지면 $B$는  $A \le B \le \ceil*{\sqrt{K/A}}$ 인 범위만 확인하면 됩니다.
+    \item 이제 $A$를 $1$부터 증가시키면서 다 확인하면... 당연히 TLE겠죠?
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{참고: 특별상 선정 기준}
   \begin{itemize}
-    \item 특정 문제를 처음으로 푼 참가자
-    \item 대상 및 금상 수상자가 처음으로 푼 문제는 제외
-    \item 해당 조건의 문제가 여러 개인 경우 푼 사람이 가장 적은 문제
-    \item 푼 사람이 같은 경우 첫 번째로 맞춘 시간이 늦은 문제
+    \item $P^3 < K \le (P+1)^3$  을 만족하는 $P$를 잡습니다.
+    \item 최악의 경우 $P - 3000 \le A \le P+1$ 인 범위만 확인해보면 됩니다.
+    \item 출제진은 이것을 증명했습니다! 여러분도 한 번 해보세요!
+    \item 봐야하는 $A$의 가짓수가 3000개 정도, 이 때 $B$도 봐야하는 가짓수가 4000개 정도로 나오므로 시간안에 답을 구할 수 있습니다.
   \end{itemize}
 \end{frame}
 
