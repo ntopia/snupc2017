@@ -7,8 +7,7 @@
 \usepackage{unicode-math}
 \usefonttheme{serif}
 \setmainfont{NanumGothicBold}
-\setmathfont[range=\mathup/{num}]{NanumGothicBold}
-\setmathfont[range={"00D7}]{NanumGothicBold}
+\setmathfont{Latin Modern Math}
 \begin{document}
 \title{2017 서울대학교 프로그래밍 경시대회}
 \date{\today}
@@ -459,16 +458,22 @@
 \begin{frame}
   \frametitle{Div1K. 정육면체를 사랑하는 사람}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item $K^3 < N \leq (K+1)^3$ 을 만족하는 $K$를 잡아봅니다.
+    \item 즉, 한 변이 $K+1$인 큐브에는 전부 다 넣어 정리할 수 있는 것이죠.
+    \item 따라서 우선 겉넓이가 $6(K+1)^2$ 인 해가 존재하게 됩니다.
+    \item 이보다 더 좋은 해를 찾아봅시다!
   \end{itemize}
 \end{frame}
 
-
+\begin{frame}
+  \frametitle{Div1K. 정육면체를 사랑하는 사람}
+  \begin{itemize}
+    \item 직육면체의 각 변을 $A, B, C$ 라 하고 $A \leq B \le C$ 를 만족한다 합시다.
+    \item $N \leq A \cdot B \cdot C$ 이므로 $N/A \leq B \cdot C$
+    \item $B + C \geq 2 \sqrt{B C}$   (산술-기하 평균 부등식)
+    \item 겉넓이는 $2 (A B + B C + C A) = 2 A (B + C) + 2 B C$
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{참고: 특별상 선정 기준}
