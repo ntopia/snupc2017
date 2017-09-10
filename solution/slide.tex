@@ -342,12 +342,17 @@
 \begin{frame}
   \frametitle{Div1F. 전자기기}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
+    \item Maximum Flow
+    \item 모든 해를 각 전자기기에 Yi개씩 연결하는 해로 바꿀 수 있습니다.
     \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
+      \item 소스에서 i번 전자기기로 유량이 1인 간선 Yi개
+      \item i번 전자기기에서 i번 전자기기를 구성하는 각 장치로 유량이 1인 간선
+      \item 각 장치에서 요구 전력으로 유량이 1인 간선
+      \item 공급 가능한 전력에서 공급 장치로 유량이 1인 간선
+      \item 공급 장치에서 싱크로 유량이 1인 간선
     \end{itemize}
+    \item 간선의 개수는 12만 개 정도이고, 디닉을 사용하면 모든 간선의 유량이 1일 때 $O(E^{1.5})$임이 보장되어 시간 안에 나옵니다.
+    \item 전력의 범위가 크기 때문에 좌표압축을 해야 합니다.
   \end{itemize}
 \end{frame}
 
@@ -418,12 +423,15 @@
 \begin{frame}
   \frametitle{Div1I. 구간 합 최대}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item 상한은 DP로 구할 수 있습니다.
+    \item $D_k = 0 (if k \le 0)$
+    \item $D_k = min ( D_{k - L_i} + S_i ) (otherwise)$
+    \item 이제 배열 $A_k = D_k - D_{k - 1}$이라고 해 봅시다.
+    \item $D_k$는 단조 증가하는 수열이기 때문에, $A_k$는 모두 음이 아닌 정수입니다.
+    \item 또한, $A_k$에서 길이가 $L_i$인 어떤 구간을 잡아도 합이 $S_i$ 이하입니다.
+    \item $A_1 + A_2 + \cdots + A_k = D_k$
+    \item 따라서 길이가 $k$인 구간 중 합이 $D_k$인 것이 존재하므로, $D_k$가 답이 됩니다.
+    \item $O(NM)$
   \end{itemize}
 \end{frame}
 
@@ -441,12 +449,13 @@
 \begin{frame}
   \frametitle{Div1J. 그림 그리기}
   \begin{itemize}
-    \item 문제를 풀기 위해 아래 지식이 필요해요.
-    \begin{itemize}
-      \item 2차원에서 직사각형 영역의 부분합을 빠르게 구하는 방법 (cf. BOJ 11660)
-      \item 주어진 히스토그램에서 가장 큰 직사각형의 넓이를 구하는 방법 (cf. BOJ 1725)
-      \item 포함배제의 원리
-    \end{itemize}
+    \item 행 번호는 0 ~ N-1, 열 번호는 0 ~ M-1이라고 하겠습니다.
+    \item $A_{(i \times M + j) \mod L} += H_i \times W_j$
+    \item $(i \times M + j) \mod L = ((i \times M \mod L) + j) \ mod L$
+    \item Convolution
+    \item FFT를 쓰면 됩니다.
+    \item 수 범위가 크기 때문에 NTT + CRT로 처리해야 합니다.
+    \item N 제한이 작아서 카라츠바로 상수를 많이 줄이면 시간 안에 나오긴 합니다.
   \end{itemize}
 \end{frame}
 
